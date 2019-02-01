@@ -4,16 +4,20 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "build": "webpack",
-    "serve": "http-server ./dist"
+    "serve": "lite-server --baseDir='dist'",
+    "start": "webpack-dev-server --open",
+    "build": "webpack"
   },
-  "dependencies": {
-    "http-server": "^0.11.1",
-    "lodash": "^4.17.11",
-    "three": "^0.98.0"
-  },
+  "dependencies": {},
   "devDependencies": {
-    "webpack": "^4.25.1",
-    "webpack-cli": "^3.1.2"
+    "clean-webpack-plugin": "^1.0.1",
+    "css-loader": "^2.1.0",
+    "file-loader": "^3.0.1",
+    "html-webpack-plugin": "^3.2.0",
+    "style-loader": "^0.23.1",
+    "three": "^0.100.0",
+    "webpack": "^4.29.0",
+    "webpack-cli": "^3.2.1",
+    "webpack-dev-server": "^3.1.14"
   }
 }
