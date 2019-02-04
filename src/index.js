@@ -5,10 +5,11 @@ import PaperTexture from './paper.jpg';
 printMe();
 
 const canvasLabel = getCanvasLabel(
-  'Hello world',
+  'Label text',
   48,
   'white',
-  'black'
+  'black',
+  80
 );
 
 document.documentElement.appendChild(canvasLabel);
@@ -57,7 +58,7 @@ function animate() {
 animate();
 
 
-function getCanvasLabel(sText, fontSize, sColor, sBgColor) {
+function getCanvasLabel(sText, fontSize, sColor, sBgColor, objContainingSphereRadius) {
   const canvas = document.createElement('canvas');
   const ctx = canvas.getContext('2d');
   const fontStyles = `${fontSize}px sans-serif`;
@@ -73,16 +74,17 @@ function getCanvasLabel(sText, fontSize, sColor, sBgColor) {
   const textBoxWidth = textWidth + 2 * textBoxPadding;
   const textBoxHeight = fontSize + 2 * textBoxPadding;
 
-  // assign the text width to the canvas elements' width
-  canvas.height = 500;
+  // canvas height will be assigned from parameter
+  // canvas.height = 500;
+  canvas.height = objContainingSphereRadius * 6;
 
   // offset is computed relative to height because of how the design looks like
-  const textBoxOffset = canvas.height / 2;
+  const textBoxOffset = canvas.height / 4;
   canvas.width = (textBoxWidth + textBoxOffset) * 2;
   canvas.style.backgroundColor = "salmon";
 
 
-  // add the background
+  // add the background of the label
   ctx.fillStyle = sBgColor;
   ctx.fillRect((canvas.width / 2 + textBoxOffset), 0, textBoxWidth, textBoxHeight);
 
@@ -99,9 +101,10 @@ function getCanvasLabel(sText, fontSize, sColor, sBgColor) {
   // draw the underline
   ctx.beginPath();
   ctx.moveTo((canvas.width / 2 + textBoxOffset - textBoxPadding), textBoxHeight / 2);
+  ctx.lineTo(canvas.width / 2, canvas.height / 6);
   ctx.lineTo(canvas.width / 2, canvas.height / 2);
-  ctx.lineTo(canvas.width / 2, canvas.height - textBoxPadding);
   ctx.stroke();
+
   return canvas;
 }
 
