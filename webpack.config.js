@@ -1,6 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const webpack = require('webpack');
 
 module.exports = {
@@ -10,11 +10,10 @@ module.exports = {
   },
   devtool: 'inline-source-map',
   devServer: {
-    contentBase: './dist',
-    hot: true
+    contentBase: './dist'
   },
   plugins: [
-    new CleanWebpackPlugin(['dist']),
+    new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       title: 'Output Management',
       template: 'src/index.html'
@@ -29,10 +28,7 @@ module.exports = {
     rules: [
       {
         test: /\.css$/,
-        use: [
-          'style-loader',
-          'css-loader'
-        ]
+        use: ['style-loader', 'css-loader']
       }
     ]
   }
