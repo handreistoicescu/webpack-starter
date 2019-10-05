@@ -4,7 +4,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "developz": "webpack-dev-server",
+    "develop": "webpack-dev-server",
     "build": "webpack"
   },
   "dependencies": {},
